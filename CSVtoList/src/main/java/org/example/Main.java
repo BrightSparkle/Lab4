@@ -1,7 +1,17 @@
 package org.example;
+import com.opencsv.exceptions.CsvValidationException;
+
+import java.io.IOException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        CsvReader csvReader = new CsvReader();
+        try {
+            List<Person> people = csvReader.readPeopleFromCsv("foreign_names.csv");
+            people.forEach(System.out::println);
+        } catch (IOException | CsvValidationException e) {
+            e.printStackTrace();
+        }
     }
 }
