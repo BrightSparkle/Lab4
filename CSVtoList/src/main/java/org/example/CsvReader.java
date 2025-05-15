@@ -10,7 +10,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Считывает данные о людях из CSV-файла и преобразует их в список объектов {@link Person}.
+ * Формат CSV: id;name;gender;birthDate;division;salary
+ * Пример строки: {@code 1;Иван Иванов;Male;15.05.1990;IT;50000.50}
+ */
 public class CsvReader {
+    /**
+     * Считывает данные из CSV-файла и преобразует их в список объектов {@link Person}.
+     * Формат CSV: id;name;gender;birthDate;division;salary.
+     * Некорректные строки пропускаются, ошибки выводятся в stderr.
+     *
+     * @param csvFilePath путь к CSV-файлу в ресурсах проекта
+     * @return список объектов {@link Person} (может быть пустым, но не null)
+     * @throws FileNotFoundException    если файл не найден
+     * @throws CsvValidationException   при ошибках формата CSV
+     * @throws IOException              при ошибках чтения файла
+     */
     public List<Person> readPeopleFromCsv(String csvFilePath) throws IOException, CsvValidationException {
         List<Person> people = new ArrayList<>();
         char separator = ';';
@@ -46,6 +62,13 @@ public class CsvReader {
         return people;
     }
 
+    /**
+     * Преобразует строковое значение пола в перечисление {@link Gender}.
+     * Регистр значения игнорируется. Некорректные значения заменяются на {@link Gender#MALE}.
+     *
+     * @param genderStr строковое представление пола (например, "Male" или "Female")
+     * @return соответствующее значение {@link Gender}
+     */
     private Gender parseGender(String genderStr) {
         try {
             return Gender.valueOf(genderStr.trim().toUpperCase());
