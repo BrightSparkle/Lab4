@@ -18,6 +18,30 @@ public class Person {
         this.birthDate = birthDate;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
