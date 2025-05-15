@@ -31,4 +31,9 @@ public class Department {
     public String toString() {
         return "Department{id=" + id + ", name='" + name + "'}";
     }
+
+    public static void reset() {
+        departments.clear();
+        nextId = 1;
+    }
 }
