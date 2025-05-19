@@ -47,7 +47,6 @@
                 <configuration>
                     <source>24</source>
                     <encoding>UTF-8</encoding>
-                    <packages>org.example</packages>
                     <doclint>none</doclint>
                 </configuration>
                 <executions>
